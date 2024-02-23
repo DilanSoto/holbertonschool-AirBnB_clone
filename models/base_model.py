@@ -1,4 +1,5 @@
 from uuid import uuid4
+from engine.file_storage import storage
 from datetime import datetime
 
 
@@ -6,10 +7,10 @@ class BaseModel:
     """Defines all common attributes/methods for other classes"""
 
     def __init__(self, *args, **kwargs):
-        """Initialization of the base model"""
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        if not kwargs:
+            self.id = str(uuid4())
+            self.created_at = self.updated_at = datetime.now()
+            storage.new(self)
 
         # If kwargs is not empty, set attributes accordingly
         if kwargs:
@@ -26,9 +27,10 @@ class BaseModel:
     def save(self):
         """
         Updates the public instance attribute updated_at with the current
-        datetime
+        datetime.
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
