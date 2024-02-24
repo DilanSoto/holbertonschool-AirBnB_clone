@@ -29,7 +29,8 @@ class BaseModel:
         datetime
         """
         self.updated_at = datetime.now()
-        from models import storage  # Importing here to avoid circular import issues
+        # Importing here to avoid circular import issues
+        from models import storage
         storage.new(self)
         storage.save()
 
