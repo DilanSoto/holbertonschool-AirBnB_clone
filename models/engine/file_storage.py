@@ -1,5 +1,6 @@
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -34,6 +35,11 @@ class FileStorage:
                 if class_name == 'BaseModel':
                     obj = BaseModel(**{k: v for k, v in
                                        obj_data.items() if k != '__class__'})
+                elif class_name == 'User':
+                    obj = User(**{k: v for k, v in
+                                  obj_data.items() if k != '__class__'})
+                else:
+                    continue
                 self.__objects[obj_id] = obj
         except FileNotFoundError:
             pass
