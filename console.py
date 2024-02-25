@@ -3,6 +3,7 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User  # Import User class
 from models import storage
 import shlex
 
@@ -11,6 +12,10 @@ class HBNBCommand(cmd.Cmd):
     """Command interpreter for current and future projects"""
 
     prompt = '(hbnb) '
+    class_dict = {
+        "BaseModel": BaseModel,
+        "User": User
+    }
 
     def do_quit(self, arg):
         """Quit command to exit the program."""
@@ -26,21 +31,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """
-        Creates a new instance of BaseModel, saves it to the JSON file and
-        prints the id.
+        Creates a new instance of BaseModel or User, saves it to the JSON file
+        and prints the id.
         """
         if not line:
             print("** class name missing **")
             return
-        try:
-            args = shlex.split(line)
-            if args[0] != "BaseModel":
-                raise NameError
-            obj = BaseModel()
-            obj.save()
-            print(obj.id)
-        except NameError:
+        args = shlex.split(line)
+        if args[0] not in self.class_dict:
             print("** class doesn't exist **")
+            return
+        obj = self.class_dict[args[0]]()
+        obj.save()
+        print(obj.id)
 
     def do_show(self, line):
         """
@@ -51,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
             return
-        if args[0] != "BaseModel":
+        if args[0] not in self.class_dict:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -70,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
             return
-        if args[0] != "BaseModel":
+        if args[0] not in self.class_dict:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -90,23 +93,23 @@ class HBNBCommand(cmd.Cmd):
         class name.
         """
         args = shlex.split(line)
-        if args and args[0] != "BaseModel":
+        if args and args[0] not in self.class_dict:
             print("** class doesn't exist **")
             return
         all_objs = storage.all()
         print([str(obj) for obj in all_objs.values()
-              if not args or args[0] == obj.__class__.__name__])
+               if not args or args[0] == obj.__class__.__name__])
 
     def do_update(self, line):
         """
         Updates an instance based on the class name and id by adding or
-        updating attribute.
+        updating attribute (value should be without double quotes).
         """
         args = shlex.split(line)
         if len(args) < 1:
             print("** class name missing **")
             return
-        if args[0] != "BaseModel":
+        if args[0] not in self.class_dict:
             print("** class doesn't exist **")
             return
         if len(args) < 2:
