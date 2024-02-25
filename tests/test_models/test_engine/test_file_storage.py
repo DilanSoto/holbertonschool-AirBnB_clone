@@ -41,7 +41,8 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn(f"BaseModel.{obj.id}", data)
 
     def test_reload(self):
-        """Test that reload correctly deserializes the JSON file to __objects."""
+        """Test that reload correctly deserializes the JSON
+                file to __objects."""
         obj = BaseModel()
         self.storage.new(obj)
         self.storage.save()
