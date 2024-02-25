@@ -3,18 +3,28 @@
 
 import cmd
 from models.base_model import BaseModel
-from models.user import User  # Import User class
+from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 from models import storage
 import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command interpreter for current and future projects"""
+    """Command interpreter for current and future projects."""
 
     prompt = '(hbnb) '
     class_dict = {
         "BaseModel": BaseModel,
-        "User": User
+        "User": User,
+        "Place": Place,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Review": Review
     }
 
     def do_quit(self, arg):
@@ -26,12 +36,12 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """Nothing happens on ENTER + empty line"""
+        """Nothing happens on ENTER + empty line."""
         pass
 
     def do_create(self, line):
         """
-        Creates a new instance of BaseModel or User, saves it to the JSON file
+        Creates a new instance of any class, saves it to the JSON file
         and prints the id.
         """
         if not line:
@@ -127,7 +137,11 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         obj = all_objs[key]
-        setattr(obj, args[2], args[3].strip("\""))
+        try:
+            value = eval(args[3])
+        except:
+            value = args[3].strip("\"")
+        setattr(obj, args[2], value)
         obj.save()
 
 
