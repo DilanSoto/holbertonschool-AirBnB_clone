@@ -10,13 +10,16 @@ class BaseModel:
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = self.created_at
+        valid_attrs = ["id", "created_at", "updated_at", "name", "my_number"]
 
-        # If kwargs is not empty, set attributes accordingly
         if kwargs:
             for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
-                    value = datetime.fromisoformat(value)
-                if key != "__class__":
+                if key in valid_attrs:
+                    if key in ["created_at", "updated_at"]:
+                        try:
+                            value = datetime.fromisoformat(value)
+                        except ValueError:
+                            continue
                     setattr(self, key, value)
 
     def __str__(self):

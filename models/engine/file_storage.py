@@ -32,8 +32,8 @@ class FileStorage:
             for obj_id, obj_data in obj_dict.items():
                 class_name = obj_data['__class__']
                 if class_name == 'BaseModel':
-                    obj = BaseModel(**{k: v for k, v in obj_data.items() if k != '__class__'})
-                # Add more conditions here for other classes
+                    obj = BaseModel(**{k: v for k, v in
+                                       obj_data.items() if k != '__class__'})
                 self.__objects[obj_id] = obj
         except FileNotFoundError:
             pass
