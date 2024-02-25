@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Module for the entry point of the command interpreter."""
+
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -6,7 +8,7 @@ import shlex
 
 
 class HBNBCommand(cmd.Cmd):
-    """Simple command processor example."""
+    """Command interpreter for current and future projects"""
 
     prompt = '(hbnb) '
 
