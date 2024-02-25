@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.review import Review
 from models import storage
 import shlex
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
@@ -138,8 +139,8 @@ class HBNBCommand(cmd.Cmd):
             return
         obj = all_objs[key]
         try:
-            value = eval(args[3])
-        except:
+            value = ast.literal_eval(args[3])
+        except (ValueError, SyntaxError):
             value = args[3].strip("\"")
         setattr(obj, args[2], value)
         obj.save()
