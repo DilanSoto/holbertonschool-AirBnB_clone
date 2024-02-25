@@ -3,16 +3,20 @@ from datetime import datetime
 
 
 class BaseModel:
+    """Defines all common attributes/methods for other classes"""
+
     def __init__(self, *args, **kwargs):
+        """Initialization of the base model"""
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = self.created_at
+
+        # If kwargs is not empty, set attributes accordingly
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     value = datetime.fromisoformat(value)
-                # Check if `key` is an attribute of `BaseModel`
-                if hasattr(self, key):
+                if key != "__class__":
                     setattr(self, key, value)
 
     def __str__(self):
@@ -25,7 +29,7 @@ class BaseModel:
         datetime
         """
         self.updated_at = datetime.now()
-        # Importing here to avoid circular import issues
+        # Import here to avoid circular import issues
         from models import storage
         storage.new(self)
         storage.save()
