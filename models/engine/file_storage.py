@@ -1,7 +1,11 @@
 import json
 from models.base_model import BaseModel
 from models.user import User
-
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 class FileStorage:
     __file_path = 'file.json'
@@ -32,14 +36,10 @@ class FileStorage:
                 obj_dict = json.load(f)
             for obj_id, obj_data in obj_dict.items():
                 class_name = obj_data['__class__']
-                if class_name == 'BaseModel':
-                    obj = BaseModel(**{k: v for k, v in
-                                       obj_data.items() if k != '__class__'})
-                elif class_name == 'User':
-                    obj = User(**{k: v for k, v in
-                                  obj_data.items() if k != '__class__'})
-                else:
-                    continue
-                self.__objects[obj_id] = obj
+                if class_name in globals():
+                    cls = globals()[class_name]
+                    obj = cls(**{k: v for k, v in
+                                 obj_data.items() if k != '__class__'})
+                    self.__objects[obj_id] = obj
         except FileNotFoundError:
             pass
