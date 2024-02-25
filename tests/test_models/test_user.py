@@ -7,10 +7,9 @@ class TestUser(unittest.TestCase):
 
     def setUp(self):
         """Set up method to start each test."""
-        # Instance with no initial values
         self.user1 = User()
-        # Instance with initial values
-        self.user2 = User(email="test@example.com", password="password", first_name="John", last_name="Doe")
+        self.user2 = User(email="test@example.com", password="password",
+                          first_name="John", last_name="Doe")
 
     def tearDown(self):
         """Tear down method to clean up any setup objects."""
@@ -24,13 +23,11 @@ class TestUser(unittest.TestCase):
 
     def test_initial_values(self):
         """Test the initial values of attributes for both instances."""
-        # User1 should have empty strings for all attributes
         self.assertEqual(self.user1.email, "")
         self.assertEqual(self.user1.password, "")
         self.assertEqual(self.user1.first_name, "")
         self.assertEqual(self.user1.last_name, "")
 
-        # User2 should have the initial values provided
         self.assertEqual(self.user2.email, "test@example.com")
         self.assertEqual(self.user2.password, "password")
         self.assertEqual(self.user2.first_name, "John")
