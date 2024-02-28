@@ -12,6 +12,7 @@ from models.review import Review
 from models import storage
 import shlex
 import ast
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -144,6 +145,18 @@ class HBNBCommand(cmd.Cmd):
             value = args[3].strip("\"")
         setattr(obj, args[2], value)
         obj.save()
+
+    def default(self, line):
+        """Handle commands that do not match any known command."""
+        pattern = re.compile(r"^\w+\.all\(\)$")
+        if pattern.match(line):
+            class_name = line.split(".")[0]
+            if class_name in self.class_dict:
+                self.do_all(class_name)
+            else:
+                print("** class doesn't exist **")
+        else:
+            cmd.Cmd.default(self, line)
 
 
 if __name__ == '__main__':
