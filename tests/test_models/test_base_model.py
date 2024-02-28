@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 import unittest
 from models.base_model import BaseModel
@@ -19,7 +20,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(model, "created_at"))
         self.assertTrue(hasattr(model, "updated_at"))
         self.assertEqual(model.created_at, model.updated_at)
-    
 
     def test_init_with_kwargs(self):
         """Test initialization with keyword arguments."""
@@ -112,20 +112,10 @@ class TestBaseModel(unittest.TestCase):
     def tearDownClass(cls):
         """Clean up files (if any) created during the tests."""
         try:
-            os.remove("file.json")  # Adjust filename as necessary
+            os.remove("file.json")
         except FileNotFoundError:
             pass
 
 
 if __name__ == '__main__':
     unittest.main()
-def test_to_dict(self):
-        """Test to_dict method."""
-        model = BaseModel()
-        model_dict = model.to_dict()
-        self.assertEqual(model_dict["__class__"], "BaseModel")
-        self.assertEqual(model_dict["id"], model.id)
-        self.assertIn("created_at", model_dict)
-        self.assertIn("updated_at", model_dict)
-        self.assertEqual(model_dict["created_at"], model.created_at.isoformat())
-        self.assertEqual(model_dict["updated_at"], model.updated_at.isoformat())

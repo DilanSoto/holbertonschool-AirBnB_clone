@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import unittest
 import os
 import json
@@ -55,7 +56,9 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsInstance(self.storage.all(), dict)
 
     def test_new_key_format(self):
-        """Test that new adds an object with correct key format to __objects."""
+        """
+        Test that new adds an object with correct key format to __objects.
+        """
         obj = BaseModel()
         self.storage.new(obj)
         key = f"{obj.__class__.__name__}.{obj.id}"
@@ -67,7 +70,10 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(os.path.exists(self.file_path))
 
     def test_save_correctly_serializes(self):
-        """Test that save correctly serializes a BaseModel instance to the JSON file."""
+        """
+        Test that save correctly serializes a BaseModel instance to the JSON
+        file.
+        """
         obj = BaseModel()
         self.storage.new(obj)
         self.storage.save()
@@ -78,7 +84,9 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(data[key]['__class__'], 'BaseModel')
 
     def test_reload_deserializes(self):
-        """Test that reload correctly deserializes the JSON file to __objects."""
+        """
+        Test that reload correctly deserializes the JSON file to __objects.
+        """
         obj = BaseModel()
         self.storage.new(obj)
         self.storage.save()
