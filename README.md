@@ -1,5 +1,7 @@
 Holbertonschool-AirBnB_Clone
+
 AirBnb Console - Project's Intention
+
 Similar to how we created a simple shell using the C Language, we are creating a command interpreter that works in similar fashion but is limited to specific use-cases.
 
 Use-cases our project will be able to manage:
