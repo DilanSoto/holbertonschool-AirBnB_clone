@@ -1,5 +1,6 @@
 from models.base_model import BaseModel
 
+
 class Place(BaseModel):
     """Represents a place with attributes like city ID, user ID, name, etc."""
     city_id = ""
