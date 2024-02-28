@@ -13,10 +13,13 @@ class TestBaseModel(unittest.TestCase):
     def test_init_no_args(self):
         """Test initialization without arguments."""
         model = BaseModel()
+        time_diff = model.updated_at - model.created_at
+        self.assertLess(abs(time_diff.total_seconds()), 0.1)
         self.assertTrue(hasattr(model, "id"))
         self.assertTrue(hasattr(model, "created_at"))
         self.assertTrue(hasattr(model, "updated_at"))
         self.assertEqual(model.created_at, model.updated_at)
+    
 
     def test_init_with_kwargs(self):
         """Test initialization with keyword arguments."""
@@ -116,3 +119,13 @@ class TestBaseModel(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+def test_to_dict(self):
+        """Test to_dict method."""
+        model = BaseModel()
+        model_dict = model.to_dict()
+        self.assertEqual(model_dict["__class__"], "BaseModel")
+        self.assertEqual(model_dict["id"], model.id)
+        self.assertIn("created_at", model_dict)
+        self.assertIn("updated_at", model_dict)
+        self.assertEqual(model_dict["created_at"], model.created_at.isoformat())
+        self.assertEqual(model_dict["updated_at"], model.updated_at.isoformat())
