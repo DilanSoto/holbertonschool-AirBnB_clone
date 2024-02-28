@@ -19,7 +19,6 @@ class Place(BaseModel):
     def __init__(self, *args, **kwargs):
         """ Initializes Place instance """
         super().__init__(*args, **kwargs)
-        # Handling initialization from kwargs for all attributes
         self.city_id = kwargs.get('city_id', "")
         self.user_id = kwargs.get('user_id', "")
         self.name = kwargs.get('name', "")
