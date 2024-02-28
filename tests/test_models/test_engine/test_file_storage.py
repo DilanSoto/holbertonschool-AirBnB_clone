@@ -10,6 +10,7 @@ class TestFileStorage(unittest.TestCase):
 
     def setUp(self):
         """Set up for the tests."""
+        FileStorage._FileStorage__objects = {}
         self.storage = FileStorage()
         self.file_path = FileStorage._FileStorage__file_path
 
@@ -19,6 +20,7 @@ class TestFileStorage(unittest.TestCase):
             os.remove(self.file_path)
         except FileNotFoundError:
             pass
+        self.storage._FileStorage__objects = {}
 
     def test_all(self):
         """Test that all returns the __objects dict."""
