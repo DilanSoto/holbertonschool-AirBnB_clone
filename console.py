@@ -148,15 +148,32 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """Handle commands that do not match any known command."""
-        pattern = re.compile(r"^\w+\.all\(\)$")
-        if pattern.match(line):
+        patterns = {
+            "all": re.compile(r"^\w+\.all\(\)$"),
+            "count": re.compile(r"^\w+\.count\(\)$")
+        }
+
+        if patterns["all"].match(line):
             class_name = line.split(".")[0]
             if class_name in self.class_dict:
                 self.do_all(class_name)
             else:
                 print("** class doesn't exist **")
+        elif patterns["count"].match(line):
+            class_name = line.split(".")[0]
+            self.do_count(class_name)
         else:
             cmd.Cmd.default(self, line)
+
+    def do_count(self, class_name):
+        """Counts instances of a specific class."""
+        if class_name not in self.class_dict:
+            print("** class doesn't exist **")
+            return
+        all_objs = storage.all()
+        count = sum(1 for obj in all_objs.values() if
+                    obj.__class__.__name__ == class_name)
+        print(count)
 
 
 if __name__ == '__main__':
