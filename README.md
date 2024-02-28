@@ -1,45 +1,14 @@
-datetime.datetime(2023, 11, 1, 16, 22, 1, 372757)}
-[BaseModel] (2f13f0f8-bb77-41e7-ba5a-21308e8aca38) {'id': '2f13f0f8-bb77-41e7-ba5a-21308e8aca38', 'created_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191300), 'updated_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191353)}
-(hbnb) destroy
-** class name missing **
-(hbnb) update BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38 first_name "Bety"
-(hbnb) show BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
-[BaseModel] (2f13f0f8-bb77-41e7-ba5a-21308e8aca38) {'id': '2f13f0f8-bb77-41e7-ba5a-21308e8aca38', 'created_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191300), 'updated_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191353), 'first_name': '"Bety"'}
-e7-ba5a-21308e8aca38
-** class doesn't exist **
-(hbnb) destroy BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
-(hbnb) show BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
-** no instance found **
-(hbnb)
-(hbnb)
-(hbnb) help
+Holbertonschool-AirBnB_Clone
+AirBnb Console - Project's Intention
+Similar to how we created a simple shell using the C Language, we are creating a command interpreter that works in similar fashion but is limited to specific use-cases.
 
-Documented commands (type help <topic>):
-========================================
-EOF  all  create  destroy  help  quit  show  update
+Use-cases our project will be able to manage:
 
-(hbnb)
-```
-
-## Non-Interactive Mode
-
-```bash
-$ echo "create BaseModel" | ./console.py
-1234-1234-1234
-$
-
-$ echo "show BaseModel 1234-1234-1234" | ./console.py
-[BaseModel] (1234-1234-1234) {'id': '1234-1234-1234', 'created_at': '2023-11-01T16:22:01.372753', 'updated_at': '2023-11-01T16:22:01.372757'}
-$
-
-
-$ echo "destroy BaseModel 1234-1234-1234" | ./console.py
-$
-
-$ echo "all BaseModel" | ./console.py
-[]
-$
-```
+Create new objects (ex: new User or a new Place).
+Retrieve an object from a file, a database, etc.
+Do operations on objects (count, compute stats, etc).
+Update attributes of an object.
+Destroy an object.
 
 # Project Structure:
 
@@ -105,4 +74,4 @@ $
 | `__init__.py`          | Makes the folder a Python module.                    |
 | `test_file_storage.py` | Contains the unit tests for the `FileStorage` class. |
 
-## Authors
+
