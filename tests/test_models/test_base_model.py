@@ -1,12 +1,9 @@
 #!/usr/bin/python3
-import sys
 import unittest
 from models.base_model import BaseModel
 from models.__init__ import storage
 from datetime import datetime, timedelta
 import os
-sys.path.insert(0, os.path.abspath(os.path.join
-                                   (os.path.dirname(__file__), '../../')))
 
 
 class TestBaseModel(unittest.TestCase):
