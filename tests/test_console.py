@@ -13,10 +13,10 @@ class TestHBNBCommand(unittest.TestCase):
         """Test instantiation of HBNBCommand"""
         self.assertIsInstance(self.cmd, HBNBCommand)
 
-    # def test_quit(self):
-    #     """Test quit command"""
-    #     with self.assertRaises(SystemExit):
-    #         self.cmd.do_quit(None)
+    def test_quit(self):
+        """Test quit command"""
+        with self.assertRaises(SystemExit):
+        self.cmd.do_quit(None)
 
 
 if __name__ == '__main__':
