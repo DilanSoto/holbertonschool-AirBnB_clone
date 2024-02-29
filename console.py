@@ -16,7 +16,9 @@ import re
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command interpreter for current and future projects."""
+    """
+    Command interpreter for current and future projects.
+    """
 
     prompt = '(hbnb) '
     class_dict = {
@@ -30,15 +32,21 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def do_quit(self, arg):
-        """Quit command to exit the program."""
+        """
+        Quit command to exit the program.
+        """
         return True
 
     def do_EOF(self, arg):
-        """EOF command to exit the program."""
+        """
+        EOF command to exit the program.
+        """
         return True
 
     def emptyline(self):
-        """Nothing happens on ENTER + empty line."""
+        """
+        Nothing happens on ENTER + empty line.
+        """
         pass
 
     def do_create(self, line):
@@ -80,7 +88,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id."""
+        """
+        Deletes an instance based on the class name and id.
+        """
         args = shlex.split(line)
         if len(args) == 0:
             print("** class name missing **")
@@ -147,7 +157,9 @@ class HBNBCommand(cmd.Cmd):
         obj.save()
 
     def default(self, line):
-        """Handle commands that do not match any known command."""
+        """
+        Handle commands that do not match any known command.
+        """
         patterns = {
             "all": re.compile(r"^\w+\.all\(\)$"),
             "count": re.compile(r"^\w+\.count\(\)$")
@@ -166,7 +178,9 @@ class HBNBCommand(cmd.Cmd):
             cmd.Cmd.default(self, line)
 
     def do_count(self, class_name):
-        """Counts instances of a specific class."""
+        """
+        Counts instances of a specific class.
+        """
         if class_name not in self.class_dict:
             print("** class doesn't exist **")
             return
