@@ -2,7 +2,6 @@
 """
 This module defines the User class that inherits from BaseModel.
 """
-
 from .base_model import BaseModel
 
 

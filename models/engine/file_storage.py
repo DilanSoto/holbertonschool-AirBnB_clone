@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+This module contains the FileStorage class. Which provides mechanisms for
+serializing instances of BaseModel subclass (like User, Place, State,
+City, Amenity, and Review) to a JSON file and deserializing them back
+into the program. It acts as a simple file-based storage system to persist
+the state of objects between executions. The class uses a dictionary to store
+all objects and provides methods to add new objects, save them to a file and
+reload them from the file.
+"""
 import json
 from models.base_model import BaseModel
 from models.user import User
