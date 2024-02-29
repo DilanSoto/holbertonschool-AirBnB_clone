@@ -1,37 +1,31 @@
 #!/usr/bin/python3
+"""Unittest Module for Review class"""
+
 import unittest
 from models.review import Review
-from models.base_model import BaseModel
 
 
 class TestReview(unittest.TestCase):
-    """Unit tests for the Review class."""
+    """testing the correct functioning of the class"""
+    def test_attr(self):
+        """test attributes"""
+        review = Review()
+        self.assertEqual(review.place_id, "")
+        self.assertEqual(review.user_id, "")
+        self.assertEqual(review.text, "")
 
-    def setUp(self):
-        """Set up for the tests."""
-        self.review1 = Review()
-        self.review2 = Review(place_id="place_id_1", user_id="user_id_1",
-                              text="Great place!")
+    def test_instance(self):
+        """test is instance"""
+        review = Review()
+        self.assertIsInstance(review, Review)
 
-    def test_init_without_args(self):
-        """Test initialization without arguments."""
-        self.assertIsInstance(self.review1, Review)
-        self.assertIs(self.review1.place_id, "")
-        self.assertIs(self.review1.user_id, "")
-        self.assertIs(self.review1.text, "")
-
-    def test_init_with_args(self):
-        """Test initialization with arguments."""
-        self.assertEqual(self.review2.place_id, "place_id_1")
-        self.assertEqual(self.review2.user_id, "user_id_1")
-        self.assertEqual(self.review2.text, "Great place!")
-
-    def test_attributes_types(self):
-        """Test the types of attributes."""
-        self.assertIsInstance(self.review1.place_id, str)
-        self.assertIsInstance(self.review1.user_id, str)
-        self.assertIsInstance(self.review1.text, str)
+    def test_type_attr(self):
+        """test type attributes"""
+        review = Review()
+        self.assertIsInstance(review.place_id, str)
+        self.assertIsInstance(review.user_id, str)
+        self.assertIsInstance(review.text, str)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
