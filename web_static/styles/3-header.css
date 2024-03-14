@@ -1,3 +1,4 @@
+/* Styles for the header */
 header {
     background-color: white;
     height: 70px;
@@ -11,5 +12,4 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 20px center;
-
 }

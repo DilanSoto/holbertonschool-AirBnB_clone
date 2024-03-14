@@ -1,3 +1,5 @@
+```css
+/* Styles for the .filters section */
 .filters {
     background-color: white;
     height: 70px;
@@ -9,6 +11,7 @@
     padding-right: 30px;
 }
 
+/* Styles for buttons within the .filters section */
 button {
     font-size: 18px;
     background-color: #fF5a5f;
@@ -20,10 +23,12 @@ button {
     margin-left: auto;
 }
 
+/* Hover effect for buttons */
 button:hover {
     opacity: 90%;
 }
 
+/* Styles for locations and amenities sections */
 .locations,
 .amenities {
     height: 100%;
@@ -35,17 +40,19 @@ button:hover {
     padding-left: 60px;
 }
 
-
+/* Border for the locations section */
 .locations {
     border-right: #DDDDDD 1px solid;
 }
 
+/* Styles for headings within locations and amenities sections */
 .locations h3,
 .amenities h3 {
     font-weight: 600;
     margin-bottom: 0;
 }
 
+/* Styles for subheadings within locations and amenities sections */
 .locations h4,
 .amenities h4 {
     font-weight: 400;

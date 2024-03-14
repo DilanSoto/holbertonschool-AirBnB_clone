@@ -1,20 +1,27 @@
+/* Styles for the .places section */
 .places {
     top: 0;
     left: 0;
     font-size: 30px;
 }
+
+/* Styles for articles within the .places section */
 .places article {
     width: 390px;
     padding: 0 20px;
     margin: 20px;
-    border:#FF5A5F 1px solid;
+    border: #FF5A5F 1px solid;
     border-radius: 4px;
     display: inline-block;
     text-align: center;
 }
+
+/* Styles for the last article within the .places section */
 article:last-child {
     margin-left: 250px;
 }
+
+/* Styles for headings within articles in the .places section */
 .places article h2 {
     font-size: 30px;
 }

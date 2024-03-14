@@ -1,26 +1,36 @@
+```css
+/* Styles for the .places section */
 .places {
     top: 0;
     left: 0;
     font-size: 30px;
 }
+
+/* Styles for articles within the .places section */
 .places article {
     width: 390px;
     padding: 0 20px;
     margin: 20px;
-    border:#FF5A5F 1px solid;
+    border: #FF5A5F 1px solid;
     border-radius: 4px;
     display: inline-block;
     text-align: center;
     position: relative;
     z-index: -1;
 }
+
+/* Styles for the last article within the .places section */
 article:last-child {
     margin-left: 250px;
 }
+
+/* Styles for headings within articles in the .places section */
 .places article h2 {
     font-size: 30px;
     line-height: 65px;
 }
+
+/* Styles for price information within articles */
 .price_by_night {
     color: #FF5A5F;
     border: solid 4px #FF5A5F;
@@ -36,6 +46,8 @@ article:last-child {
     justify-content: center;
     align-items: center;
 }
+
+/* Styles for information section within articles */
 .information {
     justify-content: center;
     border-top: 1px solid #dddddd;
@@ -43,12 +55,16 @@ article:last-child {
     font-size: small;
     line-height: 0;
 }
+
+/* Styles for specific information items within the information section */
 .information .max_guest,
 .information .number_bathrooms,
 .information .number_rooms {
     width: 100px;
     display: inline-block;
 }
+
+/* Styles for user and description sections within articles */
 .user, .description {
     text-align: left;
     font-size: medium;
